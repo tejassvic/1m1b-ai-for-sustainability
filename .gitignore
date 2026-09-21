@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------------------
+# Verdant — repository root
+# Each half also carries its own .gitignore; this one covers shared concerns.
+# ---------------------------------------------------------------------------
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environment and secrets — never commit real credentials
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs and scratch output
+*.log
+npm-debug.log*
+yarn-error.log*
+*.tmp
+scratch/

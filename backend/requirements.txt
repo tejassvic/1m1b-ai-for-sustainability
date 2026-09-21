@@ -1,0 +1,15 @@
+# Verdant backend — deliberately small dependency surface.
+# Retrieval uses scikit-learn's TF-IDF (no multi-gigabyte embedding models),
+# IBM Granite is reached over HTTP directly, and configuration is read from the
+# environment without a settings library. Fewer bytes, fewer moving parts.
+
+fastapi>=0.110
+uvicorn[standard]>=0.24
+pydantic>=2.6
+scikit-learn>=1.4
+numpy>=1.26
+httpx>=0.27
+
+# Test-only (optional):
+# pytest>=8
+# pytest-asyncio>=0.23

@@ -1,0 +1,29 @@
+{
+  "name": "verdant-ai-sustainability-platform",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Verdant - an AI sustainability platform that helps individuals and communities understand environmental challenges, explore their impact, and find practical ways to live more sustainably.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:ssr": "vite build --ssr src/entry-server.jsx --outDir dist-ssr --logLevel warn",
+    "smoke": "npm run build:ssr && node ssr-check.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "verify": "npm run check:contrast && npm run smoke && npm run build"
+  },
+  "dependencies": {
+    "@fontsource/fraunces": "^5.0.0",
+    "@fontsource/nunito-sans": "^5.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10"
+  }
+}

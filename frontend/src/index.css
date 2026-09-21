@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   BASE — the "fresh air" layer: soft surfaces, breathing rhythm, calm type.
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored sections clear of the sticky, organic navigation. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-mist font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-forest;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-leaf/25 text-forest;
+  }
+
+  /* Gentle, nature-toned scrollbar. */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-pale;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-pebble bg-sage;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-moss;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   COMPONENTS — soft, rounded, organic building blocks (no harsh angles).
+--------------------------------------------------------------------------- */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-pebble px-7 py-3.5
+      text-sm font-semibold tracking-wide transition-all duration-300 ease-out
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest
+      focus-visible:ring-offset-2 focus-visible:ring-offset-mist;
+  }
+
+  .btn-primary {
+    @apply btn bg-forest text-mist shadow-soft hover:-translate-y-0.5 hover:bg-moss hover:shadow-leaf;
+  }
+
+  .btn-ghost {
+    @apply btn border border-forest/25 bg-mist/60 text-forest
+      hover:-translate-y-0.5 hover:border-forest/45 hover:bg-pale;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-moss;
+  }
+
+  .field {
+    @apply w-full rounded-pebble border border-forest/15 bg-mist/80 px-5 py-3.5
+      text-sm text-ink placeholder:text-ink/70 transition
+      focus:border-moss focus:outline-none focus:ring-2 focus:ring-leaf/25;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Natural range slider.
+     Track and thumb are styled for both engines, and `accent-color` is set as a
+     fallback so browsers that ignore the custom thumb still render a themed
+     control rather than a default one. The thumb grows on hover and the control
+     takes a focus ring, so keyboard users can see where they are without relying
+     on colour alone.
+  --------------------------------------------------------------------------- */
+  .range-natural {
+    @apply h-2 w-full cursor-pointer appearance-none rounded-full bg-sage/35;
+    accent-color: #55743f;
+  }
+
+  .range-natural::-webkit-slider-thumb {
+    @apply h-5 w-5 appearance-none rounded-full border-2 border-white bg-moss shadow-soft
+      transition-transform duration-200;
+  }
+
+  .range-natural::-webkit-slider-thumb:hover {
+    @apply scale-110;
+  }
+
+  .range-natural::-moz-range-track {
+    @apply h-2 rounded-full bg-sage/35;
+  }
+
+  .range-natural::-moz-range-thumb {
+    @apply h-5 w-5 rounded-full border-2 border-white bg-moss shadow-soft;
+  }
+
+  .range-natural:focus-visible {
+    @apply outline-none ring-2 ring-forest ring-offset-2 ring-offset-mist;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   UTILITIES — organic forms, natural rhythm, scroll-triggered growth.
+--------------------------------------------------------------------------- */
+@layer utilities {
+  /* Reveal: content grows into place the first time it scrolls into view. */
+  .reveal-init {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  .reveal-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.85s ease,
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   ACCESSIBILITY — honour a visitor's reduced-motion preference.
+   Nature moves gently, but never against someone's comfort.
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal-init {
+    opacity: 1;
+    transform: none;
+  }
+}
